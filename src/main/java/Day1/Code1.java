@@ -1,6 +1,7 @@
 package Day1;
 public class Code1 {
     public static void main(String[] args){
-        System.out.println("Hello World");
+        String a = "Hello";
+        System.out.println(a.charAt(0));
     }
 }
