@@ -1,5 +1,5 @@
 package Day2;
-
+import  java.util.Scanner;
 public class Section6 {
     //  Challenge 1 in Section 6
     public static void printNumberInWord(int number){
@@ -251,6 +251,57 @@ public class Section6 {
             }
             System.out.print("\n");
         }
+    }
+    //SumAvg challenge
+    public static void inputThenPrintSumAndAverage(){
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0, count = 0;
+
+        while (true) {
+            try {
+                int num = scanner.nextInt();
+                sum += num;
+                count++;
+            } catch (Exception e) {
+                long avg = (count > 0) ? Math.round((double) sum / count) : 0;
+                System.out.println("SUM = " + sum + " AVG = " + avg);
+                break;
+            } finally {
+                scanner.nextLine();
+            }
+        }
+    }
+    //Bucket challenge
+    public static int getBucketCount(double width, double height, double areaPerBucket, int extraBuckets) {
+        // Validate input parameters
+        if (width <= 0 || height <= 0 || areaPerBucket <= 0 || extraBuckets < 0) {
+            return -1;
+        }
+
+        double wallArea = width * height;
+
+        double bucketsNeeded = wallArea / areaPerBucket;
+
+        int bucketsToBuy = (int) Math.ceil(bucketsNeeded) - extraBuckets;
+
+        return Math.max(bucketsToBuy, 0);
+    }
+    public static int getBucketCount(double width, double height, double areaPerBucket) {
+        if (width <= 0 || height <= 0 || areaPerBucket <= 0) {
+            return -1;
+        }
+
+        double wallArea = width * height;
+
+        return (int) Math.ceil(wallArea / areaPerBucket);
+    }
+
+    public static int getBucketCount(double area, double areaPerBucket) {
+        if (area <= 0 || areaPerBucket <= 0) {
+            return -1;
+        }
+
+        return (int) Math.ceil(area / areaPerBucket);
     }
     public static void main(String[] args) {
         System.out.println();
